@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <link rel="stylesheet" href="Kanban.css">
+</head>
+<body>
+<script type="text/javascript" src="kanban.js"></script>
+    <header>
+        <nav>
+            <img src="imgs/image 1.png">
+            <button class="button" onclick="mostrarModal()">
+                <img src="imgs/mdi_add.png">
+                Novo ticket
+            </button>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        <div class="coluna abertos">
+            <div class="header_da_coluna">
+                <span>Abertos</span>
+            </div>
+        </div>
+       
+            <div class="coluna executados"> 
+                    <div class="header_da_coluna">
+                        <span>Executados</span> 
+             </div>
+           
+        </div>
+        <div class="coluna vistoriados">
+                <div class="header_da_coluna">
+                    <span>Vistoriados</span>
+            </div>
+        </div>
+        <div class="coluna arquivados">
+                <div class="header_da_coluna">
+                    <span>Arquivados</span> 
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div id="mymodal" class="modal">
+        <div class="modal-header">
+            <span>Novo ticket</span>
+            <button class="button-generico" onclick="esconderModal()"> &times;</button>  
+        </div>
+         <hr>
+         <div class="modal-main">
+                <label for="desc">Descrição</label>
+                <input type="text" class="modal-form" id="desc">
+                <br>
+                <h3>Tipo</h3>
+                <select  class="modal-form">
+                    <option>Menu</option>
+                </select>
+                <br>
+                <h3>Responsável</h3>
+                <select  class="modal-form">
+                    <option>Menu</option>
+                </select>
+                <br>
+                <h3>Imagem</h3>
+                <input type="file" class="modal-form">
+               
+    
+            </div>
+            
+         <div class="modal-footer">
+                 <button class="button" >Criar ticket</button>
+            </div>
+        
+       </div>
+       <div class="toolbar">
+        <button class="button-toolbar">Editar</button>
+        <button class="button-toolbar">Excluir</button>
+       </div>
+
+       <div class="modal-confirmaçao">
+        <span>Alterar status</span>
+        <p>Você tem certeza que deseja mover o ticket 6523 para a coluna de executados?</p>
+       <div class="modal-confirmaçao-footer">
+         <button class="button cancelar">Cancelar</button>
+        <button class="button">Mover ticket</button>
+       </div>
+        
+       </div>
+
+       
+       <div id="mymodal" class="modal">
+        <div class="modal-header">
+            <span>Editar ticket</span>
+            &times;
+        </div>
+         <hr>
+         <div class="modal-main">
+                <h3>Descrição</h3>
+                <input type="text" class="modal-form">
+                <br>
+                <h3>Tipo</h3>
+                <select  class="modal-form">
+                    <option>Menu</option>
+                </select>
+                <br>
+                <h3>Responsável</h3>
+                <select  class="modal-form">
+                    <option>Menu</option>
+                </select>
+                <br>
+                <h3>Imagem</h3>
+                <input type="file" class="modal-form">
+               
+    
+            </div>
+         <div class="modal-footer">
+                 <button class="button" >Criar ticket</button>
+            </div> 
+        
+        
+       </div>
+      
+</body>
+</html>

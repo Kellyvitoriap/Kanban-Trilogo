@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    background-color: #F5F5F5;
+}
+
+hr{
+    background-color: #E5E5E5;
+    border: none;
+    width: 100%;
+    height: 1px;
+}
+nav{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #ffff;
+}
+.button{
+    border: none;
+    border-radius: 25px;
+    background-color:#4C12A1 ;
+    width: 133px;
+    height: 40px;
+    color:#ffff ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+.button:hover{
+    background-color: rgb(174, 78, 198);
+}
+main{
+    width: 100%;
+    padding: 20px;
+    color: #e5e5e5;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+.coluna{
+    width: 275px;
+    height:608px ;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 0%;
+}
+span{
+    color: #141414; 
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.header_da_coluna{
+    width:275px;
+    height: 40px;
+    border-top-left-radius:20px ;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.coluna.abertos .header_da_coluna{
+    background-color: rgba(245, 34, 45, 0.25);
+}
+.coluna.executados .header_da_coluna{
+    background-color: rgba(212, 102, 45, 0.25);
+}
+.coluna.vistoriados .header_da_coluna{
+    background-color: rgba(82, 196, 26, 0.25);
+}
+.coluna.arquivados .header_da_coluna{
+    background-color: rgba(193, 185, 185, 0.25);
+}
+.modal{
+    width: 384px;
+    height: 472px;
+    background-color: rgba(255, 255, 255, 1)    ;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+}
+.modal-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.modal-main{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around ;
+width: 354px;
+}
+.modal-form{
+
+    color: rgba(217, 217, 217, 1) ;
+    border-color: rgba(217, 217, 217, 1);
+    border-radius: 3px;
+    height: 32px;
+    margin-top: 16px;
+}
+
+.modal-footer{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: flex-end;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999;
+    display: none;
+}
+.button-generico{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    font-size: 20px;
+}
+
+h3{
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 12px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+.toolbar{
+    width: 128px;
+    height: 88px;
+    display: flex;
+    flex-direction:column;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    display: none;
+}
+.button-toolbar{
+    width: 128px;
+    height: 44px;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.modal-confirmaçao{
+    width: 384px;
+    height: 185px;
+    background-color: rgba(255, 255, 255, 1) ;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: none;
+}
+p{  
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.65)
+    ;
+}
+.modal-confirmaçao-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.button.cancelar{
+    background-color: rgba(177, 173, 173, 0.65);
+
+}
