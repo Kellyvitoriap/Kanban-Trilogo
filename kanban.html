@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Kanban.css">
 </head>
 <body>
-<script type="text/javascript" src="kanban.js"></script>
+<script type="text/javascript" src="kanbanjs"></script>
     <header>
         <nav>
             <img src="imgs/image 1.png">
@@ -46,26 +46,43 @@
     <div class="modal-overlay" id="modalOverlay"></div>
     <div id="mymodal" class="modal">
         <div class="modal-header">
-            <span>Novo ticket</span>
-            <button class="button-generico" onclick="esconderModal()"> &times;</button>  
+            <div class="modal-header-nav">
+                 <span>Novo ticket</span>
+                <button class="button-generico" onclick="esconderModal()"> &times;</button> 
+            </div>
+            
+             <hr>
         </div>
-         <hr>
+        
          <div class="modal-main">
-                <label for="desc">Descrição</label>
+            <div class="form">
+                <label for="desc">Descrição*</label>
                 <input type="text" class="modal-form" id="desc">
+            </div>
+                
                 <br>
-                <h3>Tipo</h3>
-                <select  class="modal-form">
+            <div class="form">
+                 <label for="type">Tipo*</label>
+                <select  class="modal-form" id="type">
                     <option>Menu</option>
                 </select>
+             </div>
+             <div>
+
+             </div>
                 <br>
-                <h3>Responsável</h3>
-                <select  class="modal-form">
+            <div class="form">
+                  <label for="resp">Responsável*</label>
+                <select  class="modal-form" id="resp">
                     <option>Menu</option>
                 </select>
+            </div>
+              
                 <br>
-                <h3>Imagem</h3>
-                <input type="file" class="modal-form">
+            <div class="form">
+                 <label for="imgs" class="form">Imagem*</label>
+                <input type="file" class="modal-form" id="imags">
+            </div>
                
     
             </div>
@@ -91,14 +108,14 @@
        </div>
 
        
-       <div id="mymodal" class="modal">
+       <div id="mymodal" class="modal-editar">
         <div class="modal-header">
             <span>Editar ticket</span>
             &times;
         </div>
          <hr>
          <div class="modal-main">
-                <h3>Descrição</h3>
+                <label>Descrição</label>
                 <input type="text" class="modal-form">
                 <br>
                 <h3>Tipo</h3>
