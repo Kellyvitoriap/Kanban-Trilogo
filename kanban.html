@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Kanban.css">
 </head>
 <body>
-<script type="text/javascript" src="kanbanjs"></script>
+<script type="text/javascript" src="kanban.js"></script>
     <header>
         <nav>
             <img src="imgs/image 1.png">
@@ -23,6 +23,33 @@
             <div class="header_da_coluna">
                 <span>Abertos</span>
             </div>
+            <div class="main">
+                <div class="card">
+                    <div class="header">
+                        <span>Procedimento</span>
+                    </div>
+                    
+                    <div class="body">
+                        <span class="id">1223</span>
+                        <span class="text">Consertar o vazamento</span>
+                     </div>
+                    
+                    <div class="footer">
+                        <span>Yudi Tamashiro</span>
+                        <button class="button-generico">...</button>
+                    </div>
+                    
+                </div>
+                </div>
+               
+                </div>
+                    
+            </div>
+                
+        </div>
+            
+         </div>
+            
         </div>
        
             <div class="coluna executados"> 
@@ -57,7 +84,7 @@
          <div class="modal-main">
             <div class="form">
                 <label for="desc">Descrição*</label>
-                <input type="text" class="modal-form" id="desc">
+                <input type="text" class="modal-form"  id="desc">
             </div>
                 
                 <br>
@@ -88,7 +115,7 @@
             </div>
             
          <div class="modal-footer">
-                 <button class="button" >Criar ticket</button>
+                 <button class="button" onclick="enviarForm()" >Criar ticket</button>
             </div>
         
        </div>
