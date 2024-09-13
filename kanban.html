@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban</title>
     <link rel="stylesheet" href="Kanban.css">
 </head>
+
 <body>
-<script type="text/javascript" src="kanban.js"></script>
     <header>
         <nav>
             <img src="imgs/image 1.png">
@@ -23,149 +24,136 @@
             <div class="header_da_coluna">
                 <span>Abertos</span>
             </div>
-            <div class="main">
-                <div class="card">
-                    <div class="header">
-                        <span>Procedimento</span>
-                    </div>
-                    
-                    <div class="body">
-                        <span class="id">1223</span>
-                        <span class="text">Consertar o vazamento</span>
-                     </div>
-                    
-                    <div class="footer">
-                        <span>Yudi Tamashiro</span>
-                        <button class="button-generico">...</button>
-                    </div>
-                    
-                </div>
-                </div>
-               
-                </div>
-                    
+            <div class="main" id="abertosMain">
+
             </div>
-                
+
         </div>
-            
-         </div>
-            
-        </div>
-       
-            <div class="coluna executados"> 
-                    <div class="header_da_coluna">
-                        <span>Executados</span> 
-             </div>
-           
+
+        <div class="coluna executados">
+            <div class="header_da_coluna">
+                <span>Executados</span>
+            </div>
+
         </div>
         <div class="coluna vistoriados">
-                <div class="header_da_coluna">
-                    <span>Vistoriados</span>
+            <div class="header_da_coluna">
+                <span>Vistoriados</span>
             </div>
         </div>
         <div class="coluna arquivados">
-                <div class="header_da_coluna">
-                    <span>Arquivados</span> 
-                </div>
+            <div class="header_da_coluna">
+                <span>Arquivados</span>
             </div>
+        </div>
         </div>
     </main>
     <div class="modal-overlay" id="modalOverlay"></div>
     <div id="mymodal" class="modal">
         <div class="modal-header">
             <div class="modal-header-nav">
-                 <span>Novo ticket</span>
-                <button class="button-generico" onclick="esconderModal()"> &times;</button> 
+                <span>Novo ticket</span>
+                <button class="button-generico" onclick="esconderModal()"> &times;</button>
             </div>
-            
-             <hr>
+
+            <hr>
         </div>
-        
-         <div class="modal-main">
+
+        <div class="modal-main">
             <div class="form">
                 <label for="desc">Descrição*</label>
-                <input type="text" class="modal-form"  id="desc">
+                <input type="text" class="modal-form" id="desc">
             </div>
-                
-                <br>
-            <div class="form">
-                 <label for="type">Tipo*</label>
-                <select  class="modal-form" id="type">
-                    <option>Menu</option>
-                </select>
-             </div>
-             <div>
 
-             </div>
-                <br>
+            <br>
             <div class="form">
-                  <label for="resp">Responsável*</label>
-                <select  class="modal-form" id="resp">
-                    <option>Menu</option>
+                <label for="type">Tipo*</label>
+                <select class="modal-form" id="type">
+                    <option>opção 1</option>
+                    <option>opção 2</option>
+                    <option>opção 3</option>
+                    <option>opção 4</option>
+                    <option>opção 5</option>
                 </select>
             </div>
-              
-                <br>
+            <div>
+
+            </div>
+            <br>
             <div class="form">
-                 <label for="imgs" class="form">Imagem*</label>
+                <label for="resp">Responsável*</label>
+                <select class="modal-form" id="resp">
+                    <option>opção 1</option>
+                    <option>opção 2</option>
+                    <option>opção 3</option>
+                    <option>opção 4</option>
+                    <option>opção 5</option>
+                </select>
+            </div>
+
+            <br>
+            <div class="form">
+                <label for="imgs" class="form">Imagem*</label>
                 <input type="file" class="modal-form" id="imags">
             </div>
-               
-    
-            </div>
-            
-         <div class="modal-footer">
-                 <button class="button" onclick="enviarForm()" >Criar ticket</button>
-            </div>
-        
-       </div>
-       <div class="toolbar">
+
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="button" onclick="enviarForm()">Criar ticket</button>
+        </div>
+
+    </div>
+    <div class="toolbar">
         <button class="button-toolbar">Editar</button>
         <button class="button-toolbar">Excluir</button>
-       </div>
+    </div>
 
-       <div class="modal-confirmaçao">
+    <div class="modal-confirmaçao">
         <span>Alterar status</span>
         <p>Você tem certeza que deseja mover o ticket 6523 para a coluna de executados?</p>
-       <div class="modal-confirmaçao-footer">
-         <button class="button cancelar">Cancelar</button>
-        <button class="button">Mover ticket</button>
-       </div>
-        
-       </div>
+        <div class="modal-confirmaçao-footer">
+            <button class="button cancelar">Cancelar</button>
+            <button class="button">Mover ticket</button>
+        </div>
 
-       
-       <div id="mymodal" class="modal-editar">
+    </div>
+
+
+    <div id="mymodal" class="modal-editar">
         <div class="modal-header">
             <span>Editar ticket</span>
             &times;
         </div>
-         <hr>
-         <div class="modal-main">
-                <label>Descrição</label>
-                <input type="text" class="modal-form">
-                <br>
-                <h3>Tipo</h3>
-                <select  class="modal-form">
-                    <option>Menu</option>
-                </select>
-                <br>
-                <h3>Responsável</h3>
-                <select  class="modal-form">
-                    <option>Menu</option>
-                </select>
-                <br>
-                <h3>Imagem</h3>
-                <input type="file" class="modal-form">
-               
-    
-            </div>
-         <div class="modal-footer">
-                 <button class="button" >Criar ticket</button>
-            </div> 
-        
-        
-       </div>
-      
+        <hr>
+        <div class="modal-main">
+            <label>Descrição</label>
+            <input type="text" class="modal-form">
+            <br>
+            <h3>Tipo</h3>
+            <select class="modal-form">
+                <option>Menu</option>
+            </select>
+            <br>
+            <h3>Responsável</h3>
+            <select class="modal-form">
+                <option>Menu</option>
+            </select>
+            <br>
+            <h3>Imagem</h3>
+            <input type="file" class="modal-form">
+
+
+        </div>
+        <div class="modal-footer">
+            <button class="button">Criar ticket</button>
+        </div>
+
+
+    </div>
+    <script type="text/javascript" src="kanban.js"></script>
+
 </body>
+
 </html>
