@@ -79,19 +79,24 @@ function criarCard(tipoText, responsavelText, descricaoText) {
 
 const idsGerados = new Set(); // Usamos um Set para armazenar IDs únicos
 
-function gerarIdUnico() {
-    let id;
-    do {
-        id = Math.floor(1000 + Math.random() * 9000); // Gera um número de 4 dígitos (1000 a 9999)
-    } while (idsGerados.has(id)); // Verifica se o ID já foi gerado
 
-    idsGerados.add(id); // Adiciona o ID gerado ao Set
-    return id;
+// Função para gerar IDs únicos de 4 dígitos
+function gerarIdUnico() {
+    let id; // Declara a variável 'id' que irá armazenar o ID gerado
+    do {
+        // Gera um número aleatório entre 1000 e 9999
+        id = Math.floor(1000 + Math.random() * 9000); 
+    } while (idsGerados.has(id)); // Verifica se o ID já existe no Set 'idsGerados'. Se existir, repete a geração.
+
+    idsGerados.add(id); // Adiciona o novo ID ao Set 'idsGerados' para garantir que ele não será repetido no futuro
+    return id; // Retorna o ID gerado
 }
 
-// Exemplo de uso:
-const novoId = gerarIdUnico();
-console.log("ID gerado: " + novoId);
+
+
+
+
+
 
 // const nome = "Joel"; // string
 // const idade = 28; // number - inteiro
