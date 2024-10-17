@@ -11,19 +11,21 @@
 // Array global para armazenar os cards como objetos 
 const colunaAbertos = document.getElementById("abertosMain"); 
 const colunaExecutados = document.getElementById("executadosMain"); 
-const cardsArray = [];
+const colunaVistoriados = document.getElementById("vistoriadosMain"); 
+const colunaArquivados = document.getElementById("arquivadosMain"); 
+const cardsArray = []; // Array que guarda todos os cards criados como objetos
 
 // Função para enviar o formulário e criar um novo card
 function enviarForm() {
-    var descricao = document.getElementById("desc").value; 
-    var tipo = document.getElementById("type").value; 
-    var responsavel = document.getElementById("resp").value; 
+    var descricao = document.getElementById("desc").value; // Pega o valor do campo de descrição do formulário
+    var tipo = document.getElementById("type").value; // Pega o valor do campo de tipo
+    var responsavel = document.getElementById("resp").value; // Pega o valor do campo de responsável
 
-    const id = Math.floor(1000 + Math.random() * 9000); // Gera um ID único para o card
-   // criarCard(id, tipo, responsavel, descricao); 
-    esconderModal(); 
+    const id = Math.floor(1000 + Math.random() * 9000); // Gera um ID único para o card com base em um número aleatório
+   // criarCard(id, tipo, responsavel, descricao); // Esta linha está comentada, pois a criação visual é feita em outra parte do código
+    esconderModal(); // Fecha o modal após a criação do card
 
-    // Adiciona o card ao array como um objeto
+    // Adiciona o card ao array como um objeto com as propriedades capturadas e define a coluna inicial como 'abertos'
     cardsArray.push({
         id: id,
         tipo: tipo,
@@ -32,19 +34,18 @@ function enviarForm() {
         coluna: 'abertos' // Coluna inicial do card
     });
 
-    atualizarColunas();
+    atualizarColunas(); // Chama a função para atualizar a exibição das colunas e mostrar o novo card
 
-    console.log(cardsArray);
+    console.log(cardsArray); // Mostra o array no console para fins de depuração
 }
 
-// Função para criar o html do card
+// Função para criar o HTML do card
 function criarCard(id, tipoText, responsavelText, descricaoText, coluna) {
-   
+    const card = document.createElement("div"); // Cria o elemento div que representará o card
+    card.classList.add("card"); // Adiciona a classe CSS 'card' ao elemento
+    card.dataset.id = id; // Atribui o ID como um atributo 'data' ao card para facilitar sua identificação
 
-    const card = document.createElement("div"); 
-    card.classList.add("card"); 
-    card.dataset.id = id; // Atribui o ID como um atributo data ao card
-
+    // Cria o header do card e adiciona o tipo de tarefa
     const header = document.createElement("div");
     header.classList.add("header");
     const tipo = document.createElement("span");
@@ -52,6 +53,7 @@ function criarCard(id, tipoText, responsavelText, descricaoText, coluna) {
     header.appendChild(tipo);
     card.appendChild(header);
 
+    // Cria o corpo do card e adiciona a descrição
     const body = document.createElement("div");
     body.classList.add("body");
     const text = document.createElement("span");
@@ -60,6 +62,7 @@ function criarCard(id, tipoText, responsavelText, descricaoText, coluna) {
     body.appendChild(text);
     card.appendChild(body);
 
+    // Cria o rodapé do card e adiciona o responsável e um botão
     const footer = document.createElement("div");
     footer.classList.add("footer");
     const responsavel = document.createElement("span");
@@ -67,95 +70,71 @@ function criarCard(id, tipoText, responsavelText, descricaoText, coluna) {
     const button = document.createElement("button");
     button.classList.add("button-generico");
     button.textContent = '...';
-    button.onclick =function(){
+    // Define o evento de clique para mover o card para a próxima coluna
+    button.onclick = function() {
         moverCard(id);
-    }
+    };
     footer.appendChild(responsavel);
     footer.appendChild(button);
     card.appendChild(footer);
 
+    // Adiciona o card na coluna correspondente com base na propriedade 'coluna' do objeto
     if(coluna == 'abertos'){
         colunaAbertos.appendChild(card);
+    } else if (coluna == 'executados'){
+    //     colunaExecutados.appendChild(card);
+    // } else if (coluna == 'vistoriados'){
+    //     colunaVistoriados.appendChild(card);
+    // } else if (coluna == 'arquivados'){
+    //     colunaArquivados.appendChild(card);
+    // }
     }
-    else if (coluna == 'executados'){
-        colunaExecutados.appendChild(card);
-    }
-
-//     // Adicionar um evento para mover o card entre colunas
-//     card.addEventListener('dragstart', (e) => {
-//         e.dataTransfer.setData('text/plain', id);
-//     });
-
-//     // Tornar o card "arrastável"
-//     card.setAttribute('draggable', true);
- }
-
-// // Função para mover o card entre colunas
-// function moverCard(event, colunaDestino) {
-//     event.preventDefault();
-//     const cardId = event.dataTransfer.getData('text/plain');
-//     const card = document.querySelector(`[data-id='${cardId}']`);
-//     const coluna = document.getElementById(colunaDestino);
-
-//     // Mover o card visualmente
-//     coluna.appendChild(card);
-
-//     // Atualizar o array com a nova coluna do card
-//     const cardObj = cardsArray.find(c => c.id == cardId);
-//     if (cardObj) {
-//         cardObj.coluna = colunaDestino;
-//     }
-
-//     console.log(cardsArray);
-// }
-
-// // Função para permitir o drop em uma coluna
-// function permitirDrop(event) {
-//     event.preventDefault();
-// }
-
-// // Adicionando event listeners para as colunas que receberão os cards
-// document.querySelectorAll('.coluna').forEach(coluna => {
-//     const main = coluna.querySelector('.main');
-//     if (main) {
-//         main.addEventListener('dragover', permitirDrop);
-//         main.addEventListener('drop', (event) => moverCard(event, main.id));
-//     }
-// });
+}
 
 // Função para exibir o modal
 function mostrarModal() {
     var modal = document.getElementById("mymodal"); 
     var overlay = document.getElementById("modalOverlay"); 
-    modal.style.display = "flex";
-    overlay.style.display = "flex";
+    modal.style.display = "flex"; // Exibe o modal
+    overlay.style.display = "flex"; // Exibe o overlay
 }
 
 // Função para esconder o modal
 function esconderModal() {
     var modal = document.getElementById("mymodal"); 
     var overlay = document.getElementById("modalOverlay");
-    modal.style.display = "none";
-    overlay.style.display = "none";
+    modal.style.display = "none"; // Esconde o modal
+    overlay.style.display = "none"; // Esconde o overlay
 }
 
-
+// Função para atualizar as colunas, limpando e reconstruindo o conteúdo com base nos cards armazenados no array
 function atualizarColunas() {
-  
-    colunaAbertos.innerHTML ='';
-    colunaExecutados.innerHTML='';
-    cardsArray.forEach(function(item){
+    colunaAbertos.innerHTML = ''; // Limpa a coluna 'Abertos'
+    colunaExecutados.innerHTML = ''; // Limpa a coluna 'Executados'
+    colunaVistoriados.innerHTML = ''; // Limpa a coluna 'Vistoriados'
+    colunaArquivados.innerHTML = ''; // Limpa a coluna 'Arquivados'
+
+    // Itera sobre cada card no array e o recria na coluna apropriada
+    cardsArray.forEach(function(item) {
         criarCard(item.id, item.tipo, item.responsavel, item.descricao, item.coluna);
     });
-
-
 }
 
-function moverCard(id){
-    cardsArray.forEach(function(item){
-        if (item.id == id){  
-            item.coluna = 'executados'
+// Função para mover o card para a próxima coluna
+function moverCard(id) {
+    cardsArray.forEach(function(item) {
+        if (item.id == id) {  // Encontra o card pelo ID
+            // Atualiza a coluna do card com base na coluna atual
+            if (item.coluna === 'abertos') {
+                item.coluna = 'executados';
+            } else if (item.coluna === 'executados') {
+                item.coluna = 'vistoriados';
+            } else if (item.coluna === 'vistoriados') {
+                item.coluna = 'arquivados';
+            } else if (item.coluna === 'arquivados') {
+                item.coluna = 'abertos'; // Retorna para 'Abertos' se estiver em 'Arquivados'
+            }
         }
-    })
-    atualizarColunas();
+    });
+    atualizarColunas(); // Atualiza a interface após mover o card
 }
