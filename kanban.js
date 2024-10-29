@@ -71,9 +71,24 @@ function criarCard(id, tipoText, responsavelText, descricaoText, coluna) {
     button.classList.add("button-generico");
     button.textContent = '...';
     // Define o evento de clique para mover o card para a próxima coluna
+    let clickTimer = null;
+
     button.onclick = function() {
-        moverCard(id);
+        if (clickTimer) return;
+        clickTimer = setTimeout(() => {
+            moverCard(id);
+            clickTimer = null;
+        }, 300);
     };
+    
+    button.ondblclick = function() {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        editarCard(id);
+    };
+    
+
+    
     footer.appendChild(responsavel);
     footer.appendChild(button);
     card.appendChild(footer);
@@ -82,13 +97,13 @@ function criarCard(id, tipoText, responsavelText, descricaoText, coluna) {
     if(coluna == 'abertos'){
         colunaAbertos.appendChild(card);
     } else if (coluna == 'executados'){
-    //     colunaExecutados.appendChild(card);
-    // } else if (coluna == 'vistoriados'){
-    //     colunaVistoriados.appendChild(card);
-    // } else if (coluna == 'arquivados'){
-    //     colunaArquivados.appendChild(card);
-    // }
+        colunaExecutados.appendChild(card);
+    } else if (coluna == 'vistoriados'){
+        colunaVistoriados.appendChild(card);
+    } else if (coluna == 'arquivados'){
+        colunaArquivados.appendChild(card);
     }
+    
 }
 
 // Função para exibir o modal
@@ -137,4 +152,30 @@ function moverCard(id) {
         }
     });
     atualizarColunas(); // Atualiza a interface após mover o card
+}
+
+function editarCard(id) {
+    const card = cardsArray.find(item => item.id === id);
+
+    if (card) {
+        mostrarModal();
+        document.getElementById("desc").value = card.descricao;
+        document.getElementById("type").value = card.tipo;
+        document.getElementById("resp").value = card.responsavel;
+        document.getElementById("salvarBtn").onclick = function() {
+            salvarEdicaoCard(id);
+        };
+    }
+}
+
+function salvarEdicaoCard(id) {
+    const card = cardsArray.find(item => item.id === id);
+
+    if (card) {
+        card.descricao = document.getElementById("desc").value;
+        card.tipo = document.getElementById("type").value;
+        card.responsavel = document.getElementById("resp").value;
+        atualizarColunas();
+        esconderModal();
+    }
 }
